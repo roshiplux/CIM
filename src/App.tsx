@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { ChevronRight, ChevronDown, BookOpen, Cpu, Zap, Brain, Clock, Database, GitBranch } from 'lucide-react';
+import { useState } from 'react';
+import { BookOpen, Cpu, Zap, Brain, Database, GitBranch } from 'lucide-react';
 
 const StudyGuide = () => {
-  const [activeSection, setActiveSection] = useState(null);
-  const [activeSubsection, setActiveSubsection] = useState(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [activeSubsection, setActiveSubsection] = useState<string | null>(null);
 
   const sections = [
     {
@@ -1368,7 +1368,7 @@ const StudyGuide = () => {
     }
   ];
 
-  const toggleSection = (sectionId) => {
+  const toggleSection = (sectionId: string) => {
     if (activeSection === sectionId) {
       setActiveSection(null);
       setActiveSubsection(null);
@@ -1413,7 +1413,7 @@ const StudyGuide = () => {
               </button>
             ))}
           </div>
-        ) : (
+        ) : currentSection ? (
           /* Section View */
           <div className="space-y-4">
             {/* Back Button */}
@@ -1465,7 +1465,7 @@ const StudyGuide = () => {
               </div>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
 
       {/* Footer */}
